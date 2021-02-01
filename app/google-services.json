@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1069157796406",
+    "firebase_url": "https://fir-smartbabies-default-rtdb.firebaseio.com",
+    "project_id": "fir-smartbabies",
+    "storage_bucket": "fir-smartbabies.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069157796406:android:5fdcca8b1d089d65c36697",
+        "android_client_info": {
+          "package_name": "com.example.firebasesmartbabies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069157796406-srlfgj3unrb9v1h39bp0bc7a919d69ar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasesmartbabies",
+            "certificate_hash": "2a822ed239088b1b0e34372c3a06a97c5f187359"
+          }
+        },
+        {
+          "client_id": "1069157796406-ovt98mr2d6epv3t6v4p5tuepbg7ndo53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPtZ_oJvF03K9KiESrObfUEI9UeVprz5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069157796406-ovt98mr2d6epv3t6v4p5tuepbg7ndo53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
