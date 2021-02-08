@@ -4,7 +4,8 @@ import android.content.ContentResolver;
         import android.net.Uri;
         import android.os.Handler;
         import android.os.Bundle;
-        import android.view.View;
+import android.provider.MediaStore;
+import android.view.View;
         import android.webkit.MimeTypeMap;
         import android.widget.Button;
         import android.widget.EditText;
@@ -34,7 +35,7 @@ public class Admin extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST =1;
     private EditText Productname,Description,Price;
     private Button choose;
-    private Button submit,view;
+    private Button submit,view,camera;
     private ImageView image;
     private ProgressBar mProgressBar;
 
@@ -52,6 +53,7 @@ public class Admin extends AppCompatActivity {
         choose=findViewById(R.id.button4);
         submit=findViewById(R.id.button5);
         view=findViewById(R.id.button3);
+        camera=findViewById(R.id.button6);
 
         image=findViewById(R.id.imageView4);
         mProgressBar=findViewById(R.id.progressBar4);
@@ -64,6 +66,13 @@ public class Admin extends AppCompatActivity {
             public void onClick(View view) {
                 openFileChooser();
 
+            }
+        });
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, 1);
             }
         });
 

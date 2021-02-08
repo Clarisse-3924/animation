@@ -1,9 +1,11 @@
 package com.example.smartbabies;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter1.onI
 
         muploads=new ArrayList<>();
         mAdapter = new ImageAdapter1(MainActivity.this,muploads);
+        new ItemTouchHelper(itemTouchHelper).attachToRecyclerView(mRecyclerView);
         mRecyclerView.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(MainActivity.this);
@@ -273,4 +276,16 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter1.onI
 //        });
 //        return super.onCreateOptionsMenu(menu);
 //    }
+    ItemTouchHelper.SimpleCallback itemTouchHelper= new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+    @Override
+    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+        return false;
+    }
+
+    @Override
+    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+      muploads.remove(viewHolder.getAdapterPosition());
+      mAdapter.notifyDataSetChanged();
+    }
+};
 }
