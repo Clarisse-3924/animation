@@ -10,14 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ConfigurationInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,33 +49,35 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter1.onI
     private FirebaseStorage mStorage;
     private ValueEventListener mDRListener;
     private List<upload> muploads;
-
-//List<listview>list;
-//ListView list_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_PORTRAIT){
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);}
+        else if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
         Name = (TextView) findViewById(R.id.name);
 
-        search=findViewById(R.id.search);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    search=findViewById(R.id.search);
+     search.addTextChangedListener(new TextWatcher() {
+          @Override
+          public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+           }
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+         }
 
-            }
+          @Override
+          public void afterTextChanged(Editable s) {
+             filter(s.toString());
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-
-            }
+           }
         });
+
 
 
         mRecyclerView=findViewById(R.id.myrecycleview1);
@@ -110,18 +118,6 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter1.onI
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         Name.setText("WELCOME TO OUR STORE: " + name);
-//        list=new ArrayList<>();
-//        list.add(new listview(R.drawable.baby1,"Dress","5000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby2,"Dress","10000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby3,"Dress","6000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby4,"Trousers","15000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby5,"Trousers","7000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby6,"Shirt","5000 RWF", "Add To Cart"));
-//        list.add(new listview(R.drawable.baby7,"T-shirt","3000 RWF", "Add To Cart"));
-//
-//        list_item=findViewById(R.id.list_item);
-//        mylistadapter adapter= new mylistadapter(this,R.layout.store,list);
-//        list_item.setAdapter(adapter);
     }
 
    private  void filter(String text){
@@ -256,4 +252,25 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter1.onI
         closeDrawer(drawerLayout);
     }
 
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.searchmenu,menu);
+//        MenuItem item =menu.findItem(R.id.search);
+//        SearchView searchView =(SearchView)item.getActionView();
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                filter(newText);
+//                return false;
+//            }
+//        });
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }

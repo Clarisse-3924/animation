@@ -34,13 +34,14 @@
                 android:id="@+id/search"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
+                android:hint="search for .........."
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 android:textStyle="bold"
+                android:icon="@drawable/ic_search"
                 android:layout_below="@+id/name"/>
         </RelativeLayout>
         <GridLayout
